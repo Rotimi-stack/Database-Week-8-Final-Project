@@ -73,7 +73,7 @@ DB_PASSWORD=Your new password
 DB_DATABASE= food_hub
 
 
-6.) VoilAa!!! Your backend is all set up
+6.) Voila!!! Your backend is all set up
 
 6). Good Job! now you can add an HTML file and test the endpoints
 
