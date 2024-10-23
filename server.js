@@ -28,13 +28,15 @@ app.get('/create-food-donors-table', (req, res) => {
         CREATE TABLE IF NOT EXISTS FoodDonors (
             donor_id INT AUTO_INCREMENT PRIMARY KEY,
             donor_name VARCHAR(100) NOT NULL,
-            contact_number VARCHAR(15),
+            phone_no VARCHAR(15),
             email VARCHAR(100),
-            address TEXT,
-            food_type_donated VARCHAR(50),
+            address VARCHAR(200),
+            food_type_donated INT,
             donation_date DATE,
             quantity DECIMAL(10, 2),
-            status VARCHAR(20) DEFAULT 'active'
+            status VARCHAR(20) DEFAULT 'active',
+            FOREIGN KEY (food_type_donated) REFERENCES FoodType(food_type_id)  -- Foreign key constraint
+            
         );
     `;
 
@@ -49,14 +51,13 @@ app.get('/create-food-donors-table', (req, res) => {
     });
 });
 
-
 // Route to create the FoodType table
 app.get('/create-foodtype-table', (req, res) => {
     const createFoodTypeTableQuery = `
         CREATE TABLE IF NOT EXISTS FoodType (
             food_type_id INT AUTO_INCREMENT PRIMARY KEY,
             food_name VARCHAR(100) NOT NULL,
-            description TEXT,
+            description VARCHAR(200),
             category VARCHAR(100),
             expire_date datetime
         );
@@ -73,17 +74,15 @@ app.get('/create-foodtype-table', (req, res) => {
     });
 });
 
-
-
 // Route to create the Beneficiaries table
 app.get('/create-beneficiaries-table', (req, res) => {
     const createBeneficiariesTableQuery = `
         CREATE TABLE IF NOT EXISTS Beneficiaries (
             beneficiary_id INT AUTO_INCREMENT PRIMARY KEY,
             beneficiary_name VARCHAR(100) NOT NULL,
-            contact_number VARCHAR(15),
+            phone_no VARCHAR(15),
             email VARCHAR(100),
-            address TEXT,
+            address VARCHAR(200),
             delivery_preference VARCHAR(50),
             food_type_id INT,
             registration_date DATE,
@@ -102,7 +101,6 @@ app.get('/create-beneficiaries-table', (req, res) => {
     });
 });
 
-
 // Route to create the DistributionCenters table
 app.get('/create-distributioncenters-table', (req, res) => {
     const createDistributionCentersTableQuery = `
@@ -114,6 +112,7 @@ app.get('/create-distributioncenters-table', (req, res) => {
             capacity INT,
             operating_hours VARCHAR(100),
             manager_name VARCHAR(100)
+            date_created datetime
         );
     `;
 
@@ -138,7 +137,7 @@ app.get('/create-deliveryrecords-table', (req, res) => {
             receiving_personnel VARCHAR(100) NOT NULL,
             delivery_date DATE NOT NULL,
             delivery_status VARCHAR(50) DEFAULT 'pending',
-            notes TEXT,
+            notes VARCHAR(500),
             CONSTRAINT fk_center FOREIGN KEY (center_id) REFERENCES DistributionCenters(center_id),
             CONSTRAINT fk_food_type FOREIGN KEY (food_type_id) REFERENCES FoodType(food_type_id)
         );
@@ -155,7 +154,6 @@ app.get('/create-deliveryrecords-table', (req, res) => {
     });
 });
 
-
 // Route to create the DistributionRecords table
 app.get('/create-distributionrecords-table', (req, res) => {
     const createDistributionRecordsTableQuery = `
@@ -165,6 +163,7 @@ app.get('/create-distributionrecords-table', (req, res) => {
             food_type_id INT,
             quantity INT NOT NULL,
             receiving_date DATE NOT NULL,
+            notes VARCHAR(500)
             CONSTRAINT fk_beneficiary FOREIGN KEY (beneficiary_id) REFERENCES Beneficiaries(beneficiary_id),
             CONSTRAINT fk_food_type FOREIGN KEY (food_type_id) REFERENCES FoodType(food_type_id)
         );
