@@ -1,0 +1,68 @@
+Project startup steps----------------------------------------------------
+
+PS C:\Users\arowo\OneDrive\Documents\PLP-Contents\Database Class\Database-Week-8-Final-Project> nmp init -y
+nmp : The term 'nmp' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the 
+name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ ~~~
+    + CategoryInfo          : ObjectNotFound: (nmp:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+PS C:\Users\arowo\OneDrive\Documents\PLP-Contents\Database Class\Database-Week-8-Final-Project> npm init -y
+Wrote to C:\Users\arowo\OneDrive\Documents\PLP-Contents\Database Class\Database-Week-8-Final-Project\package.json:
+
+{
+  "name": "database-week-8-final-project",
+  "version": "1.0.0",
+  "main": "database.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+}
+
+
+
+PS C:\Users\arowo\OneDrive\Documents\PLP-Contents\Database Class\Database-Week-8-Final-Project> npm install mysql2
+
+added 13 packages, and audited 14 packages in 31s
+1 package is looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+PS C:\Users\arowo\OneDrive\Documents\PLP-Contents\Database Class\Database-Week-8-Final-Project> npm install cors
+
+added 3 packages, and audited 17 packages in 25s
+
+  run `npm fund` for details
+
+PS C:\Users\arowo\OneDrive\Documents\PLP-Contents\Database Class\Database-Week-8-Final-Project> mysql -u root -p -e "CREATE USER 'fooduserEnter password: ************
+PS C:\Users\arowo\OneDrive\Documents\PLP-Contents\Database Class\Database-Week-8-Final-Project>
+>> mysql -u root -p -e "GRANT ALL PRIVILEGES ON food_hub.* TO 'fooduser'@'localhost';"
+Enter password: ************
+PS C:\Users\arowo\OneDrive\Documents\PLP-Contents\Database Class\Database-Week-8-Final-Project> node server.js
+C:\Users\arowo\OneDrive\Documents\PLP-Contents\Database Class\Database-Week-8-Final-Project\server.js:14
+app.use(cors());
+^
+
+ReferenceError: app is not defined
+    at Object.<anonymous> (C:\Users\arowo\OneDrive\Documents\PLP-Contents\Database Class\Database-Week-8-Final-Project\server.js:14:1)    
+    at Module._compile (node:internal/modules/cjs/loader:1358:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+    at node:internal/main/run_main_module:28:49
+
+Node.js v20.14.0
+PS C:\Users\arowo\OneDrive\Documents\PLP-Contents\Database Class\Database-Week-8-Final-Project> npm install express
+
+added 64 packages, and audited 81 packages in 9s
+14 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+PS C:\Users\arowo\OneDrive\Documents\PLP-Contents\Database Class\Database-Week-8-Final-Project> node server.js
+DB Connected!
