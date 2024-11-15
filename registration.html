@@ -26,83 +26,96 @@
     </header>
 
 
-
-    <section id="registration">
-        <form action="/register" method="post" class="contact-form" id="contactForm" novalidate>
-
-            <h2 class="contact-heading">Create an Account</h2>
-            <h4 class="contact-heading">Already Have an Account?<a href="login.html">Login</a></h4>
-
-            <div class="social-login">
-                <p>Or Sign Up With:</p>
-                <a href="https://accounts.google.com" target="_blank" rel="noopener">
-                    <i class="fab fa-google" aria-hidden="true"></i> Google
-                </a>
-                <a href="https://www.facebook.com/" target="_blank" rel="noopener">
-                    <i class="fab fa-facebook" aria-hidden="true"></i> Facebook
-                </a>
+<section id="registration">
+    <form action="/register" method="post" class="contact-form" id="contactForm" novalidate>
+        <h2 class="contact-heading">Create an Account</h2>
+        <h4 class="contact-heading">Already Have an Account?<a href="login.html">Login</a></h4>
+        <div class="social-login">
+            <p>Or Sign Up With:</p>
+            <a href="(link unavailable)" target="_blank" rel="noopener">
+                <i class="fab fa-google" aria-hidden="true"></i> Google
+            </a>
+            <a href="(link unavailable)" target="_blank" rel="noopener">
+                <i class="fab fa-facebook" aria-hidden="true"></i> Facebook
+            </a>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="fname">Firstname:</label>
+                <input type="text" id="firstName" name="firstName" required minlength="2"
+                    placeholder="Enter your First Name">
             </div>
-
-            <label for="fname">Firstname:</label>
-            <input type="text" id="firstName" name="firstName" required minlength="2"
-                placeholder="Enter your First Name">
-
-            <label for="lname">Lastname:</label>
-            <input type="text" id="lastName" name="lastName" required minlength="2" placeholder="Enter your Last name">
-
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required placeholder="Enter your Email">
-
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required placeholder="Enter Password">
-
-            <label for="confirm_password">Confirm Password:</label>
-            <input type="password" id="confirm_password" name="confirm_password" required
-                placeholder="Confirm Password">
-
-            <label for="phone">Phone:</label>
-            <input type="text" id="phone" name="phone" required minlength="2" placeholder="Enter Phone No">
-
-            <label for="address">Address:</label>
-            <input type="text" id="address" name="address" required minlength="2" placeholder="Enter Phone No">
-
-            <label for="dob">Date Of Birth:</label>
-            <input type="date" id="dob" name="dob" required placeholder="Enter your Age">
-         
-
-            <label for="gender">Gender:</label>
-            <div class="gender-group">
-                <label for="male">
-                    <input type="radio" id="male" name="gender" value="male" required> Male
-                </label>
-                <label for="female">
-                    <input type="radio" id="female" name="gender" value="female"> Female
-                </label>
+            <div class="form-group">
+                <label for="lname">Lastname:</label>
+                <input type="text" id="lastName" name="lastName" required minlength="2"
+                    placeholder="Enter your Last name">
             </div>
-
-            <label for="country">Country:</label>
-            <select id="country" name="country" required>
-                <option value=""></option>
-                <option value="nigeria">Nigeria</option>
-                <option value="france">France</option>
-                <option value="japan">Japan</option>
-            </select>
-
-            <div class="terms-wrapper">
-                <label for="terms">I agree to the <a href="#" target="_blank">Terms and Conditions</a></label>
-                <input type="checkbox" id="terms" name="terms" required>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required placeholder="Enter your Email">
             </div>
-
-            <div class="terms-wrapper">
-                <label for="newsletter">Sign Up for Newsletter and Updates <a href="#"
-                        target="_blank">Newsletter</a></label>
-                <input type="checkbox" id="newsletter" name="newsletter">
+            <div class="form-group">
+                <label for="phone">Phone:</label>
+                <input type="text" id="phone" name="phone" required minlength="2" placeholder="Enter Phone No">
             </div>
-
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required placeholder="Enter Password">
+            </div>
+            <div class="form-group">
+                <label for="confirm_password">Confirm Password:</label>
+                <input type="password" id="confirm_password" name="confirm_password" required
+                    placeholder="Confirm Password">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" required minlength="2" placeholder="Enter Address">
+            </div>
+            <div class="form-group">
+                <label for="dob">Date Of Birth:</label>
+                <input type="date" id="dob" name="dob" required placeholder="Enter your Age">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <div class="gender-group">
+                    <label for="male">
+                        <input type="radio" id="male" name="gender" value="male" required> Male
+                    </label>
+                    <label for="female">
+                        <input type="radio" id="female" name="gender" value="female"> Female
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="country">Country:</label>
+                <select id="country" name="country" required>
+                    <option value=""></option>
+                    <option value="nigeria">Nigeria</option>
+                    <option value="france">France</option>
+                    <option value="japan">Japan</option>
+                </select>
+            </div>
+        </div>
+        <div class="terms-wrapper">
+            <label for="terms">I agree to the <a href="#" target="_blank">Terms and Conditions</a></label>
+            <input type="checkbox" id="terms" name="terms" required>
+        </div>
+        <div class="contact-container">
             <button type="submit" class="contact-button">Submit</button>
-        </form>
-    </section>
+        </div>
+       
+    </form>
+</section>
+
+
     <script src="registration.js"></script>
 </body>
 
