@@ -1,0 +1,210 @@
+/* Ensure the body uses flexbox */
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+/* Make the container fill the space between header and footer */
+.container-fluid {
+    display: flex;
+    flex: 1; /* This allows it to take up the remaining space */
+    overflow-x: hidden; /* Enable horizontal scrolling */
+}
+
+/* Sidebar styles */
+nav.sidebar {
+    height: 100vh; /* Full viewport height */
+    position: fixed;
+    top: 70px; /* Offset for fixed header height */
+    left: 0;
+    z-index: 1000;
+    width: 18.6667%; /* Based on col-md-2 */
+    background-color: rgba(23, 162, 102, 0.772)  !important;
+    border-right: 1px solid #ddd; /* Optional border on right of sidebar */
+   
+}
+
+/* Adjust main content for sidebar */
+main {
+    margin-left: 16.6667%; /* Adjust based on the sidebar width (col-md-2) */
+    padding: 25px; /* Add some padding for main content */
+    flex: 1;
+    background-color: #ffffff; /* Background color for main content */
+    transition: margin-left 0.3s, width 0.3s; /* Smooth transition for margin and width */
+}
+
+/* Add a class to manage expanded main section when sidebar is hidden */
+main.expanded {
+    margin-left: 0; /* Remove margin when sidebar is hidden */
+    width: calc(100% - 30px); /* Fill the full width with some padding */
+}
+
+/* Adjust sidebar styles for when it's hidden */
+nav.sidebar.hidden {
+    width: 0; /* Collapse the sidebar */
+    overflow: hidden; /* Hide overflow content */
+}
+
+nav.sidebar:not(.hidden) {
+    width: 250px; /* Width of the expanded sidebar */
+}
+
+/* Header styles */
+header {
+    background: rgba(23, 162, 102, 0.772);
+    color: #fff;
+    padding: 2px;
+    text-align: center;
+    border-bottom: 5px solid #00307a;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header nav ul li a:hover {
+    transform: scale(1.1);
+    color: darkgray;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    color: #fff;
+    font-size: 14px;
+    text-decoration: none;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+nav ul li a:hover {
+    animation: shake 0.5s forwards;
+    color: darkgray;
+    cursor: pointer;
+}
+
+.social-media-icons {
+    display: flex;
+    margin-left: 10px;
+}
+
+.social-media-icons a {
+    color: white;
+    margin-right: 15px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-media-icons a:hover {
+    transform: scale(1.5);
+    color: darkgray;
+    cursor: pointer;
+}
+
+.social-media-icons h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+    font-style: italic;
+    color: White;
+    left: 85%;
+    margin-top: 1rem;
+    text-align: left;
+}
+
+.social-media-icons h2:hover {
+    animation: shake 0.5s forwards;
+}
+
+/* Styling for the footer */
+footer {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px; /* Adjust height as needed */
+    background-color: #f8f9fa; /* Light background color */
+    text-align: center;
+    padding: 10px;
+    border-top: 1px solid #ddd; /* Optional border on top of the footer */
+}
+
+/* Change color of all Font Awesome icons to white */
+.sidebar .fa, .fas, .far, .fab {
+    background-color: white !important;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: flex-end; /* Align the button to the right */
+    padding: 10px; /* Padding around the button */
+}
+
+#toggleButton {
+    background: none; /* No background */
+    border: none; /* No border */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 20px; /* Icon size */
+}
+
+.sidebar {
+    transition: width 0.3s; /* Smooth transition for width change */
+}
+
+.sidebar.hidden {
+    width: 0; /* Collapse the sidebar */
+    overflow: hidden; /* Hide overflow content */
+}
+
+.sidebar:not(.hidden) {
+    width: 250px; /* Width of the expanded sidebar */
+}
+
+
+/* Style for the footer bottom section */
+.footer-bottom {
+    background:rgba(23, 162, 102, 0.772);/* Matches footer or slightly darker */
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    font-size: 0.9em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.footer-bottom p, .footer-bottom .social-links {
+    margin: 5px 0;
+}
+
+.footer-bottom .social-links a {
+    color: #ccc;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.footer-bottom .social-links a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+
+
+

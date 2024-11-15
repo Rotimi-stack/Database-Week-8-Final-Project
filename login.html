@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Form</title>
+
+    <link rel="stylesheet" href="login.css" />
+  </head>
+
+  <body>
+    <header>
+      <div class="social-media-icons">
+        <a href="index">
+          <h2>Food Hub</h2>
+        </a>
+      </div>
+      <!-- Navbar -->
+      <nav>
+        <ul class="nav-links">
+          <li><a href="registration">Sign Up</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section id="login">
+      <form
+        action="/login"
+        method="post"
+        class="login-form"
+        id="loginForm"
+        novalidate
+      >
+        <h2 class="login-heading">Login</h2>
+
+        <label for="loginemail">Email:</label>
+        <input
+          type="email"
+          id="loginemail"
+          name="loginemail"
+          required
+          placeholder="Enter your Email"
+        />
+        <div id="loginemail-error" class="error"></div>
+
+        <label for="loginpassword">Password:</label>
+        <input
+          type="password"
+          id="loginpassword"
+          name="loginpassword"
+          required
+          placeholder="Enter Password"
+        />
+        <div id="loginpassword-error" class="error"></div>
+
+        <a href="#" class="forgot-password">Forgot Password?</a>
+        <h3 class="forgot-password">Dont Have an account yet?<a href="registration">Sign Up</a></h3>
+
+        <button type="submit" class="login-button">Submit</button>
+      </form>
+    </section>
+
+    <!-- Script at the bottom to ensure DOM is fully loaded -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Clear the JWT token from localStorage on login page load
+    localStorage.removeItem("jwt");
+
+        const loginForm = document.getElementById("loginForm");
+
+        if (loginForm) {
+          loginForm.addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent default form submission
+
+            clearErrors();
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const email = document.getElementById("loginemail").value.trim();
+            const password = document
+              .getElementById("loginpassword")
+              .value.trim();
+
+            let valid = true;
+
+            if (email === "") {
+              displayError("loginemail", "Email is required");
+              valid = false;
+            } else if (!emailPattern.test(email)) {
+              displayError("loginemail", "Please enter a valid email address");
+              valid = false;
+            }
+
+            if (password === "") {
+              displayError("loginpassword", "Password is required");
+              valid = false;
+            }
+
+            if (valid) {
+              const loginData = { loginemail: email, loginpassword: password };
+
+              fetch("/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(loginData),
+              })
+                .then((response) => response.json())
+                .then((data) => {
+                  if (data.success) {
+                    // Redirect based on server response
+                    if (data.redirect) {
+                      // Store the token in localStorage after login success
+                      localStorage.setItem("jwt", data.token); // Store the JWT token
+                      console.log('Token stored:', localStorage.getItem('jwt'));
+                      console.log('JWT Token:', data.token);  // Log the token to the console
+                      window.location.href = data.redirect;
+                    }
+                  } else {
+                    displayError("loginemail", data.message || "Login failed");
+                  }
+                })
+                .catch((error) => {
+                  console.error("Error logging in:", error);
+                  displayError(
+                    "loginemail",
+                    "An error occurred during login. Please try again."
+                  );
+                });
+            }
+          });
+        }
+      });
+
+      // Function to display error messages
+      function displayError(fieldId, message) {
+        const field = document.getElementById(fieldId);
+        const errorDivId = fieldId + "-error"; // Assuming there are divs with IDs like 'loginemail-error' and 'loginpassword-error'
+        const errorDiv = document.getElementById(errorDivId);
+
+        // If error div doesn't exist, create one dynamically
+        if (!errorDiv) {
+          const newErrorDiv = document.createElement("div");
+          newErrorDiv.id = errorDivId;
+          newErrorDiv.className = "error";
+          newErrorDiv.style.color = "red";
+          newErrorDiv.style.marginTop = "5px";
+          newErrorDiv.innerText = message;
+          field.parentNode.appendChild(newErrorDiv); // Append error message after the input field
+        } else {
+          errorDiv.innerText = message; // Update the message if error div already exists
+        }
+      }
+
+      // Function to clear error messages
+      function clearErrors() {
+        const errorMessages = document.querySelectorAll(".error");
+        errorMessages.forEach(function (msg) {
+          msg.innerText = ""; // Clear existing error messages
+        });
+      }
+    </script>
+  </body>
+</html>

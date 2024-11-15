@@ -1,0 +1,259 @@
+/* Navbar Styles */
+header {
+    background:rgba(23, 162, 102, 0.772);
+    color: #fff;
+    padding: 5px; 
+    text-align: center;
+    border-bottom: 5px solid #00307a; 
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%; 
+    z-index: 1000; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+}
+
+.social-media-icons {
+    display: flex;
+    align-items: center; 
+    margin-left: 10px; 
+}
+
+.social-media-icons a {
+    text-decoration: none; 
+    color: white; 
+    font-weight: bold; 
+    font-family: 'Open Sans', sans-serif; 
+    font-style:italic; 
+}
+
+.social-media-icons a:hover {
+    animation: shake 0.5s; /* Apply shake animation for 0.5 seconds */
+}
+.nav-links {
+    list-style: none;
+    display: flex; 
+    justify-content: flex-end;
+    padding: 0; 
+    margin: 0;
+}
+
+.nav-links li {
+    margin: 0 1rem; 
+}
+
+.nav-links a {
+    color: white;
+    font-weight: bold; 
+    font-family: 'Open Sans', sans-serif; 
+    font-style: italic; 
+    text-decoration: none; 
+    transition: transform 0.3s ease, color 0.3s ease; /* Transition effects */
+    
+}
+
+.nav-links a:hover {
+    animation: shake 0.5s forwards; /* Shake effect on hover */
+    color: darkgray; /* Change color on hover */
+}
+
+
+/* Registration Section Styles */
+#registration {
+    background-image: url('https://images.pexels.com/photos/5327654/pexels-photo-5327654.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'); /* Replace with your image URL */
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    padding: 60px 0 10px;
+    color: white;
+}
+#registration:hover .contact-form {
+    animation: shake 0.5s forwards; 
+}
+
+/* Contact Form Styles */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 100%;
+    margin: 0 auto; 
+    max-height: 600px; /* Set a maximum height for the form */
+    overflow-y: auto;  /* Allow vertical scrolling if content exceeds */
+}
+.contact-form label {
+    font-size: 1.0rem; /* Reduce label font size */
+}
+/* Headings */
+.contact-heading {
+    text-align: center;
+    color: white; 
+    margin-bottom: -11px; /* Reduce spacing between heading and content */
+    font-size: 1.5rem; /* Reduce from current size */
+}
+
+.contact-form h4 {
+    margin-top: 0px; 
+    font-size: 1.0rem; 
+    font-family: 'Arial', sans-serif; 
+    color: white; 
+}
+
+.contact-form h4 a {
+    color: green; 
+    text-decoration: underline; 
+}
+
+/* Social Login Styles */
+.social-login {
+    margin-top: 20px;
+    text-align: center; 
+}
+
+.social-login p {
+    margin-top: 0px; 
+    color: white;
+}
+
+.social-login a {
+    display: inline-flex; 
+    align-items: center; 
+    margin: 0 10px; 
+    font-size: 1rem; 
+    color: white; 
+    text-decoration: none;
+    border: 1px solid #ccc; 
+    padding: 8px 12px; 
+    border-radius: 4px; 
+    transition: background-color 0.3s, color 0.3s; 
+}
+
+.social-login a:hover {
+    background-color: #f0f0f0; 
+    color: #000;
+}
+
+/* Override for form labels and inputs to keep them left-aligned */
+#registration form label,
+#registration form input,
+#registration form select,
+#registration form .gender-group,
+#registration form .terms-wrapper {
+    align-self: flex-start; 
+    width: 100%; 
+    margin-bottom: -1rem; /* Reduce space between elements */
+}
+
+/* Form Styling */
+#registration form {
+    display: flex;                  
+    flex-direction: column;         
+    gap: 1rem;  
+    justify-content: flex-start;                       
+    max-width: 600px;
+    margin: 30px auto; 
+    padding: 1rem;   
+    background:rgba(23, 162, 102, 0.772);
+    border-radius: 20px;    
+    min-height: 10px;          
+    padding-top: 0%;         
+}
+
+/* Input and Textarea Styling */
+#registration form input,
+#registration form textarea {
+    width: 95%;                    
+    padding: 0.5rem; /* Reduce padding from 0.75rem to 0.5rem */            
+    border: 1px solid #555;         
+    border-radius: 4px;              
+    background-color: #444;         
+    color: #fff;                   
+    box-sizing: border-box;  
+    height: auto; /* Ensure the height auto-adjusts */
+}
+
+/* Textarea Specific Styling */
+#registration form textarea {
+    height: 150px;                  
+    resize: vertical;          
+}
+
+/* Button Styling */
+#registration form button {
+    background-color: #555;        
+    padding: 0.75rem 1.5rem;        
+    color: #fff;                   
+    font-size: 0.9rem;              
+    border: none;                  
+    cursor: pointer;                
+    border-radius: 4px;             
+    width: 150px;                   
+    margin-top: 1rem;               
+    transition: background-color 0.3s ease; 
+    box-sizing: border-box;   
+}
+
+#registration form button:hover {
+    background-color: #777;        
+}
+
+/* Label Styling */
+#registration form label {
+    color: #fff;                   
+    font-weight: bold;             
+    margin-bottom: 0.5rem;         
+}
+
+/* Gender Radio Buttons Styling */
+.gender-group {
+    display: flex;            
+    gap: 1rem;                
+    align-items: center;      
+    margin-bottom: 1rem;      
+}
+
+.gender-group label {
+    display: flex;            
+    align-items: center;      
+    gap: 0.5rem;         
+}
+
+.gender-group input[type="radio"] {
+    margin: 0;                /* Removes default margins from radio buttons */
+}
+
+/* Style for the Terms and Conditions checkbox */
+.terms-wrapper {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.terms-wrapper input[type="checkbox"] {
+    margin-right: 10px; 
+}
+
+.terms-wrapper label {
+    font-size: 0.9rem;
+}
+
+.terms-wrapper label a {
+    color: lightblue;  
+    text-decoration: underline;
+}
+
+@keyframes shake {
+    0% { transform: translate(0); }
+    25% { transform: translate(-5px, 0); }
+    50% { transform: translate(5px, 0); }
+    75% { transform: translate(-5px, 0); }
+    100% { transform: translate(0); }
+}
+
+
+

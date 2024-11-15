@@ -1,0 +1,162 @@
+/* Styling for the login section */
+/* Header Styling */
+header {
+    background:rgba(23, 162, 102, 0.772);
+    color: #fff;
+    padding: 5px; 
+    text-align: center;
+    border-bottom: 5px solid #00307a; 
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%; 
+    z-index: 1000; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+}
+
+.social-media-icons {
+    display: flex;
+    align-items: center; 
+    margin-left: 10px; 
+}
+
+.social-media-icons a {
+    text-decoration: none; 
+    color: white; 
+    font-weight: bold; 
+    font-family: 'Open Sans', sans-serif; 
+    font-style: italic; 
+}
+
+.social-media-icons a:hover h2 {
+    animation: shake 0.5s forwards; 
+}
+
+.nav-links {
+    list-style: none;
+    display: flex; 
+    justify-content: flex-end;
+    padding: 0; 
+    margin: 0;
+}
+
+.nav-links li {
+    margin: 0 1rem; 
+}
+
+.nav-links a {
+    color: white;
+    font-weight: bold; 
+    font-family: 'Open Sans', sans-serif; 
+    font-style: italic; 
+    text-decoration: none; 
+    transition: transform 0.3s ease, color 0.3s ease; 
+}
+
+.nav-links a:hover {
+    transform: scale(1.1); 
+    color: darkgray; 
+}
+
+
+
+#login {
+    background-image: url('https://images.pexels.com/photos/5234585/pexels-photo-5234585.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'); /* Add your background image URL */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Styling for the login form */
+.login-form {
+    background:rgba(23, 162, 102, 0.772);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+    width: 500px;
+    text-align: center;
+}
+
+/* Heading Styling */
+.login-heading {
+    color: white;
+    margin-bottom: 1rem;
+    font-size: 24px;
+    margin-bottom: 60px;
+}
+
+/* Input Fields Styling */
+.login-form input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+}
+
+label {
+    color: white;            
+    font-weight: bold;       
+    margin-top: 10px;     
+    display: block;          
+    font-size: 16px;        
+}
+
+/* Submit Button Styling */
+.login-button {
+    width: 30%;
+    padding: 10px;
+    border: none;
+    background-color: #ffffff;
+    color: blue;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: 55px;
+}
+
+.login-button:hover {
+    background-color: lightblue;
+}
+
+/* Forgot Password Styling */
+.forgot-password {
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+.error {
+    color: red;           
+    margin-top: 5px;     
+    font-size: 19px;    
+    font-weight: bold;
+}
+
+/* Shake Animation */
+@keyframes shake {
+    0% { transform: translate(0); }
+    25% { transform: translate(-5px, 0); }
+    50% { transform: translate(5px, 0); }
+    75% { transform: translate(-5px, 0); }
+    100% { transform: translate(0); }
+}
+
+/* Login Form Shake Effect on Hover */
+.login-form:hover {
+    animation: shake 0.5s ease; 
+    animation-fill-mode: forwards; 
+}

@@ -66,3 +66,60 @@ added 64 packages, and audited 81 packages in 9s
 found 0 vulnerabilities
 PS C:\Users\arowo\OneDrive\Documents\PLP-Contents\Database Class\Database-Week-8-Final-Project> node server.js
 DB Connected!
+
+
+
+------------------------------------------RESGISTRATION $ LOGIN----------------------------------
+when you set the registration and login package
+install bcrypt npm install bcrypt
+define the bcrypt object in server.js
+
+
+This is to pass the rquest to the server
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+LOGIN FEATURES
+Enable session Management
+-npm install express-session
+// Set up session management
+app.use(session({
+    secret: 'your-secret-key', // Replace with a strong secret key
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: true } // Set to true if using HTTPS
+}));
+
+
+Set Up Json web token
+npm install jsonwebtoken// This package provides methods for signing and verifying JWTs.
+
+const jwt = require('jsonwebtoken');
+const SECRET_KEY = 'victorhubapp07#'; // Replace with a strong secret key
+
+
+
+Authenticate the token
+//authentication middleare that performs validation of the token
+function authenticateToken(req, res, next) {
+    const token = req.headers['authorization']?.split(' ')[1]; // Expecting "Bearer <token>"
+
+    if (!token) return res.status(401).json({ message: 'Access token required' });
+
+    console.log('Token received:', token);  // Log the token for debugging
+
+    jwt.verify(token, SECRET_KEY, (err, decoded) => {
+        if (err) return res.status(403).json({ message: 'Invalid token' });
+
+        // Check if it's an admin or a patient
+        if (decoded.role) {
+            // It's an admin, role is available
+            req.user = { id: decoded.id, role: decoded.role };
+        } else {
+            // It's a patient, only id is available
+            req.user = { id: decoded.id };
+        }
+
+        next();  // Proceed to the next middleware/route handler
+    });
+}
