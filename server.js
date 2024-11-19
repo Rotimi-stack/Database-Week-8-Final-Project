@@ -1,4 +1,6 @@
 // Import required packages
+
+const https = require('https'); // Changed from 'http' to 'https'
 const express = require('express');
 const db = require('./database'); // Import the database connection
 const cors = require('cors');
@@ -19,18 +21,31 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname)));// Serve static files from the project directory
 
 
+//#region SESSION MANAGEMENT
 // Set up session management
 app.use(session({
-    secret: 'victorHubFood07#', // Replace with a strong secret key
+    secret: process.env.SESSION_SECRET, // Use the secret from .env
     resave: false,
     saveUninitialized: true,
     cookie: { secure: true } // Set to true if using HTTPS
 }));
 
+// Check user session
+app.get('/check-session', (req, res) => {
+    // Check if the user is logged in
+    if (req.session.adminId) {
+        return res.json({ role: 'super_admin' }); // User is an admin
+    } else if (req.session.userId) {
+        return res.json({ role: 'user' }); // User is a patient
+    } else {
+        return res.status(401).json({ message: 'Unauthorized' }); // User not logged in
+    }
+});
+//#endregion
+
 //#region JSON AUTHENTICATION
 const jwt = require('jsonwebtoken');
-const SECRET_KEY = 'victorhubapp07#'; // Replace with a strong secret key
-
+const SECRET_KEY = process.env.JWT_SECRET; // Use the JWT secret from .env
 
 //authentication middleare that performs validation of the token
 function authenticateToken(req, res, next) {
@@ -54,18 +69,11 @@ function authenticateToken(req, res, next) {
 }
 //#endregion
 
-// Check user session
-app.get('/check-session', (req, res) => {
-    // Check if the user is logged in
-    if (req.session.adminId) {
-        return res.json({ role: 'super_admin' }); // User is an admin
-    } else if (req.session.userId) {
-        return res.json({ role: 'user' }); // User is a patient
-    } else {
-        return res.status(401).json({ message: 'Unauthorized' }); // User not logged in
-    }
-});
-
+// Load SSL certificate and key from environment variables
+const options = {
+    key: fs.readFileSync(path.resolve(__dirname, process.env.SSL_KEY_PATH)), // Dynamic path from .env
+    cert: fs.readFileSync(path.resolve(__dirname, process.env.SSL_CERT_PATH)) 
+  };
 
 
 
@@ -198,9 +206,6 @@ app.get('/index', (req, res) => {
 
 //#region DASHBOARD
 // Route to access the dashboard securely
-
-
-
 
 app.get('/admin', (req, res) => {
     // Serve the admin.html page
@@ -1445,7 +1450,8 @@ app.get('/logout', (req, res) => {
 
 
 
-// Listen on port 3000
-app.listen(3000, () => {
-    console.log('Server running on port 3000');
-});
+// Create HTTPS server
+https.createServer(options, app).listen(3000, () => {
+    console.log('HTTPS Server running on https://localhost:3000');
+  });
+  
