@@ -138,6 +138,11 @@ label {
     background-color: lightblue;
 }
 
+/* Login Form Shake Effect on Hover */
+.login-form:hover {
+    animation: shake 0.5s ease; 
+    animation-fill-mode: forwards; 
+}
 /* Forgot Password Styling */
 .forgot-password {
     display: block;
@@ -167,8 +172,4 @@ label {
     100% { transform: translate(0); }
 }
 
-/* Login Form Shake Effect on Hover */
-.login-form:hover {
-    animation: shake 0.5s ease; 
-    animation-fill-mode: forwards; 
-}
+
