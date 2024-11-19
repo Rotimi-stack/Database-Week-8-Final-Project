@@ -44,15 +44,13 @@ CREATE DATABASE food_hub;
 3. Set Up User Privileges 👤
 Use the credentials below or create your own:
 
----
-
 mysql -u root -p -e "CREATE USER 'fooduser'@'localhost' IDENTIFIED BY 'foodhub';"
 mysql -u root -p -e "GRANT ALL PRIVILEGES ON food_hub.* TO 'fooduser'@'localhost';"
 
+---
+
 4. Configure the Database Connection ⚙️
 Update your database.js file with your MySQL credentials:
-
----
 
 const mysql = require('mysql2');
 require('dotenv').config(); // Load environment variables
