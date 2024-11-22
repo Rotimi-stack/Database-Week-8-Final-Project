@@ -10,6 +10,8 @@ const session = require('express-session');//Session Management
 const app = express();// Create an instance of the Express framework
 const bcrypt = require('bcrypt');//For Hashing Password
 const bodyParser = require('body-parser');
+const jwt = require('jsonwebtoken');
+const SECRET_KEY = process.env.JWT_SECRET; // Use the JWT secret from .env
 
 
 app.use(bodyParser.urlencoded({ extended: true }));// Body parser middleware to parse form data from POST requests
@@ -44,9 +46,6 @@ app.get('/check-session', (req, res) => {
 //#endregion
 
 //#region JSON AUTHENTICATION
-const jwt = require('jsonwebtoken');
-const SECRET_KEY = process.env.JWT_SECRET; // Use the JWT secret from .env
-
 //authentication middleare that performs validation of the token
 function authenticateToken(req, res, next) {
     const authHeader = req.headers['authorization'];
